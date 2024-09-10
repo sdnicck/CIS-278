@@ -3,16 +3,17 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
 class Credit {
 private:
     int accountNumber;
-    int balance;
-    int totalCharge;
-    int totalCredit;
-    int creditLimit;
+    float balance;
+    float totalCharge;
+    float totalCredit;
+    float creditLimit;
 
 public:
     explicit Credit(int a, int b, int c, int d, int e)
