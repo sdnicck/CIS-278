@@ -82,12 +82,13 @@ int main()
     int totalCredit;
     int creditLimit;
 
-    int accountNumber= 0;
+    int accountNumber;
+
+    cout << "Please enter your account number (-1 to quit): " << endl;
+    cin >> accountNumber;
+    balanceCheck.setAccountNumber(accountNumber);
 
     while (accountNumber != -1) {
-        cout << "Please enter your account number: " << endl;
-        cin >> accountNumber;
-        balanceCheck.setAccountNumber(accountNumber);
 
         cout << "Please enter your current balance: " << endl;
         cin >> balance;
@@ -112,12 +113,12 @@ int main()
             cout << "Balance: " << balanceCheck. newBalance() << endl;
             cout << "Credit Limit Exceeded." << endl;
 
+         cout << "Please enter your account number (-1 to quit): " << endl;
+         cin >> accountNumber;
+         balanceCheck.setAccountNumber(accountNumber);
 
         }
-
     }
-
-
 }
 
 
