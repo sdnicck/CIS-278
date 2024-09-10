@@ -32,7 +32,12 @@ public:
     }
 
     void setBalance(int b) {
-        balance = b;
+        if (b <= 0) {
+            balance = 0;
+        }
+        else {
+            balance = b;
+        }
     }
 
     int getBalance() {
@@ -62,6 +67,10 @@ public:
     int getCreditLimit() {
         return creditLimit;
     }
+
+    int newBalance() {
+        return balance + totalCharge - totalCredit;
+    }
 };
 
 int main()
@@ -73,12 +82,39 @@ int main()
     int totalCredit;
     int creditLimit;
 
-    int accountNumber{ -1 };
+    int accountNumber= 0;
 
     while (accountNumber != -1) {
-        cout << "Please enter your accountNumber: " << endl;
+        cout << "Please enter your account number: " << endl;
         cin >> accountNumber;
         balanceCheck.setAccountNumber(accountNumber);
+
+        cout << "Please enter your current balance: " << endl;
+        cin >> balance;
+        balanceCheck.setBalance(balance);
+
+        cout << "Please enter the total charges: " << endl;
+        cin >> totalCharge;
+        balanceCheck.setTotalCharge(totalCharge);
+
+        cout << "Please enter the total creidts: " << endl;
+        cin >> totalCredit;
+        balanceCheck.setTotalCredit(totalCredit);
+
+        cout << "Please enter the credit limit: " << endl;
+        cin >> creditLimit;
+        balanceCheck.setCreditLimit(creditLimit);
+
+        cout << "Your new balance is $" << balanceCheck.newBalance() << endl;
+        if (balanceCheck.newBalance() >= balanceCheck.getCreditLimit()) {
+            cout << "Account: " << balanceCheck.getAccountNumber() << endl;
+            cout << "Credit Limit: " << balanceCheck.getCreditLimit() << endl;
+            cout << "Balance: " << balanceCheck. newBalance() << endl;
+            cout << "Credit Limit Exceeded." << endl;
+
+
+        }
+
     }
 
 
