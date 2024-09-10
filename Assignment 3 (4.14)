@@ -1,0 +1,87 @@
+// Assignment 3 (4.14).cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Credit {
+private:
+    int accountNumber;
+    int balance;
+    int totalCharge;
+    int totalCredit;
+    int creditLimit;
+
+public:
+    explicit Credit(int a, int b, int c, int d, int e)
+        : accountNumber(a)
+        , balance(b)
+        , totalCharge(c)
+        , totalCredit(d)
+        , creditLimit(e)
+    {};
+
+    void setAccountNumber(int a) {
+        accountNumber = a;
+    }
+
+    int getAccountNumber() const {
+        return accountNumber;
+    }
+
+    void setBalance(int b) {
+        balance = b;
+    }
+
+    int getBalance() {
+        return balance;
+    }
+
+    void setTotalCharge(int c) {
+        totalCharge = c;
+    }
+
+    int getTotalCharge() {
+        return totalCharge;
+    }
+
+    void setTotalCredit(int d) {
+        totalCredit = d;
+    }
+
+    int getTotalCredit() {
+        return totalCredit;
+    }
+
+    void setCreditLimit(int e) {
+        creditLimit = e;
+    }
+
+    int getCreditLimit() {
+        return creditLimit;
+    }
+};
+
+int main()
+{
+    Credit balanceCheck{ 0,0,0,0,0 };
+
+    int balance;
+    int totalCharge;
+    int totalCredit;
+    int creditLimit;
+
+    int accountNumber{ -1 };
+
+    while (accountNumber != -1) {
+        cout << "Please enter your accountNumber: " << endl;
+        cin >> accountNumber;
+        balanceCheck.setAccountNumber(accountNumber);
+    }
+
+
+}
+
+
