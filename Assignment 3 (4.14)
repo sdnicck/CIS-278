@@ -10,13 +10,13 @@ using namespace std;
 class Credit {
 private:
     int accountNumber;
-    float balance;
-    float totalCharge;
-    float totalCredit;
-    float creditLimit;
+    double balance;
+    double totalCharge;
+    double totalCredit;
+    double creditLimit;
 
 public:
-    explicit Credit(int a, int b, int c, int d, int e)
+    explicit Credit(int a, double b, double c, double d, double e)
         : accountNumber(a)
         , balance(b)
         , totalCharge(c)
@@ -32,7 +32,7 @@ public:
         return accountNumber;
     }
 
-    void setBalance(int b) {
+    void setBalance(double b) {
         if (b <= 0) {
             balance = 0;
         }
@@ -41,35 +41,35 @@ public:
         }
     }
 
-    int getBalance() {
+    double getBalance() {
         return balance;
     }
 
-    void setTotalCharge(int c) {
+    void setTotalCharge(double c) {
         totalCharge = c;
     }
 
-    int getTotalCharge() {
+    double getTotalCharge() {
         return totalCharge;
     }
 
-    void setTotalCredit(int d) {
+    void setTotalCredit(double d) {
         totalCredit = d;
     }
 
-    int getTotalCredit() {
+    double getTotalCredit() {
         return totalCredit;
     }
 
-    void setCreditLimit(int e) {
+    void setCreditLimit(double e) {
         creditLimit = e;
     }
 
-    int getCreditLimit() {
+    double getCreditLimit() {
         return creditLimit;
     }
 
-    int newBalance() {
+    double newBalance() {
         return balance + totalCharge - totalCredit;
     }
 };
@@ -78,10 +78,10 @@ int main()
 {
     Credit balanceCheck{ 0,0,0,0,0 };
 
-    int balance;
-    int totalCharge;
-    int totalCredit;
-    int creditLimit;
+    double balance;
+    double totalCharge;
+    double totalCredit;
+    double creditLimit;
 
     int accountNumber;
 
@@ -107,19 +107,18 @@ int main()
         cin >> creditLimit;
         balanceCheck.setCreditLimit(creditLimit);
 
-        cout << "Your new balance is $" << balanceCheck.newBalance() << endl;
+        cout << "Your new balance is $ "<< fixed << setprecision(2) << balanceCheck.newBalance() << endl;
         if (balanceCheck.newBalance() >= balanceCheck.getCreditLimit()) {
-            cout << "Account: " << balanceCheck.getAccountNumber() << endl;
-            cout << "Credit Limit: " << balanceCheck.getCreditLimit() << endl;
-            cout << "Balance: " << balanceCheck. newBalance() << endl;
+            cout << "Account: " << fixed << setprecision(2) << balanceCheck.getAccountNumber() << endl;
+            cout << "Credit Limit: " << fixed << setprecision(2) << balanceCheck.getCreditLimit() << endl;
+            cout << "Balance: " << fixed << setprecision(2) << balanceCheck.newBalance() << endl;
             cout << "Credit Limit Exceeded." << endl;
 
-         cout << "Please enter your account number (-1 to quit): " << endl;
-         cin >> accountNumber;
-         balanceCheck.setAccountNumber(accountNumber);
+            cout << "Please enter your account number (-1 to quit): " << endl;
+            cin >> accountNumber;
+            balanceCheck.setAccountNumber(accountNumber);
 
         }
     }
 }
-
 
