@@ -1,0 +1,80 @@
+// Assignment 5 (6.57).cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+unsigned int productProblem();
+
+unsigned int commentNumber();
+
+
+int main()
+{
+    int productAnswer{ 0 };
+    srand(static_cast<unsigned int>(time(0)));
+
+    enum class Status { CORRECT, INCORRECT };
+
+    Status mathAnswer;
+
+    mathAnswer = Status::CORRECT;
+
+    while (mathAnswer == Status::CORRECT) {
+
+        unsigned int productQuestion{ productProblem() };
+
+        cin >> productAnswer;
+
+        while (productAnswer != productQuestion) {
+            mathAnswer = Status::INCORRECT;
+            cout << "No. Please try again\n" << endl;
+            cin >> productAnswer;
+        }
+        if (productAnswer == productQuestion) {
+            mathAnswer = Status::CORRECT;
+            commentNumber();
+            }
+        }
+
+    }
+
+
+void presentProblem(int numOne, int numTwo) {
+
+    cout << "How much is " << numOne << " times " << numTwo << " ?\n " << endl;
+}
+
+unsigned int productProblem() {
+
+    int singleDigit1 = (1 + rand() % 9);
+    int singleDigit2 = (1 + rand() % 9);
+
+    int finalProduct{ singleDigit1 * singleDigit2 };
+
+    presentProblem(singleDigit1, singleDigit2);
+
+    return finalProduct;
+}
+
+unsigned int commentNunber()
+{
+
+    int commentGenerator = (1 + rand() % 4);
+
+    switch (commentGenerator) {
+    case 1: 
+        cout << "Very good!" << endl;
+    case 2:
+        cout << "Excellent!" << endl;
+    case 3:
+        cout << "Nice work!" << endl;
+    case 4:
+        cout << "Keep up the good work" << endl;
+    }
+
+    return commentGenerator;
+}
