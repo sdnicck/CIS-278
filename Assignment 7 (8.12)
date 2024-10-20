@@ -1,0 +1,104 @@
+// Assignment 7 (8.12).cpp : This file contains the 'main' function. Program execution begins and ends there.
+//Satya Dulam
+//CIS 278
+//Oct 23, 2024
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int randomNum() {
+
+    int numberGenerator = (1 + rand() % 10);
+    return numberGenerator;
+}
+
+int moveTortoise(int tortMove, int tortRace, int counter) {
+    tortMove = randomNum();
+
+
+    if (tortRace >= 70) {
+        return counter;
+    }
+    else {
+        if ((tortMove >= 1) && (tortMove <= 5)) {
+            tortRace += 3;
+        }
+        if ((tortMove >= 6) && (tortMove <= 7)) {
+            //figure this part out 
+            tortRace -= 6;
+        }
+        if ((tortMove >= 8) && (tortMove <= 10)) {
+            tortRace += 1;
+
+        }
+        if (tortRace <= 0) {
+            tortRace = 1;
+        }
+        //cout << "hi" << tortMove << " " << tortRace << " " << counter << " " << endl;
+
+        return moveTortoise(tortMove, tortRace, counter += 1);
+    }
+}
+int moveHare(int hareMove, int hareRace, int counter) {
+    hareMove = randomNum();
+    if (hareRace >= 70) {
+        return counter;
+    }
+    else {
+
+        if ((hareMove >= 1) && (hareMove <= 2)) {
+            hareRace += 0;
+        }
+        else if ((hareMove >= 3) && (hareMove <= 4)) {
+            hareRace += 9;
+        }
+        else if (hareMove == 5) {
+            hareRace -= 12;
+        }
+        else if ((hareMove >= 6) && (hareMove <= 8)) {
+            hareRace += 1;
+
+        }
+        else if ((hareMove >= 9) && (hareMove <= 10)) {
+            hareRace -= 2;
+        }
+        if (hareRace <= 0) {
+            hareRace = 1;
+        }
+        //cout << "hi!" << hareMove << " " << hareRace << " " << counter << endl;
+        return moveHare(hareMove, hareRace, counter += 1);
+
+    }
+
+}
+
+int main()
+{
+
+    int totalSquare[69];
+    int *tS69 = &totalSquare[69];
+
+    cout <<  tS69 << endl;
+    tS69 += 1;
+     cout <<  tS69 << endl;
+    srand(static_cast<unsigned int>(time(0)));
+
+   int hareMove = moveHare(0, 1, 0);
+   int tortMove = moveTortoise(0, 1, 0);
+
+   for (int x = 0; x < 4, x++) {
+
+   }
+
+   if (hareMove > tortMove) {
+        cout << "TORTOISE WINS!!!YAY!!!" << endl;
+   }
+   if (hareMove < tortMove) {
+       cout << "Hare wins.Yuch." << endl;
+   }
+
+  
+
+}
