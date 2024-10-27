@@ -79,5 +79,44 @@ int main()
 //   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
 //   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
 
+#pragma once
+#include <string>
+#include <array>
+#include <iostream>
+
+using namespace std;
+
+
+class Card
+{
+public:
+
+	enum class Face { Ace, Duece, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
+
+	enum class Suit { Spades, Clubs, Diamonds, Hearts };
+
+	Card(string face = "Ace", string suit = "Spades") :
+		face("Ace"),
+		suit("Spades")
+	{}
+
+	static array < string, 13> Face ;
+	static array < string, 4> Suit;
+
+
+	string toString(string face, string suit) {
+		return face + "of" + suit + "\n";
+	}
+
+private:
+	string face;
+	string suit;
+
+};
+//{ "Ace", "Duece", "Three", "Four", "Five", "Sixe", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" }
+//{ "Spades", "Clubs", "Diamonds", "Hearts" }
+
+//const size_t sizeFace{ 13 };
+//const size_t sizeSuit{ 4 };
 
 
