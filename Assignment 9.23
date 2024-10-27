@@ -1,0 +1,53 @@
+Class Card
+#pragma once
+#include <string>
+#include <array>
+
+using namespace std;
+
+class Card
+{
+	public:
+	string face;
+	string suit;
+ 
+	enum class Face: unsigned int {Ace, Duece, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King};
+
+	enum class Suit: unsigned int { Spades, Clubs, Diamonds, Hearts };
+
+	Card(string face = "Ace", string suit = "Spades"):
+	 face("Ace"), 
+	 suit("Spades")
+	{}
+
+	//make static 
+	array < string, 13> Face { "Ace", "Duece", "Three", "Four", "Five", "Sixe", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
+	array < string, 4> Suit { "Spades", "Clubs", "Diamonds", "Hearts" };
+
+	
+	string toString(string face, string suit) {
+		return face + "of" + suit + "\n";
+	}
+}; 
+
+
+Class DeckOfCards
+
+#pragma once
+#include <array>
+#include <iostream>
+#include <string>
+#include <Card.h>
+
+using namespace std;
+
+class DeckOfCards
+{
+	array <string, 52> deck ;
+
+	for (x = 0,x < 13, x++) {
+	cout << Card.toString()
+	}
+};
+
+
