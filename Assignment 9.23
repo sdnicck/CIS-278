@@ -1,83 +1,7 @@
-Class Card
-#pragma once
-#include <string>
-#include <array>
+class card
 
-using namespace std;
-
-class Card
-{
-	public:
-	string face;
-	string suit;
- 
-	enum class Face: unsigned int {Ace, Duece, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King};
-
-	enum class Suit: unsigned int { Spades, Clubs, Diamonds, Hearts };
-
-	Card(string face = "Ace", string suit = "Spades"):
-	 face("Ace"), 
-	 suit("Spades")
-	{}
-
-	//make static 
-	array < string, 13> Face { "Ace", "Duece", "Three", "Four", "Five", "Sixe", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
-	array < string, 4> Suit { "Spades", "Clubs", "Diamonds", "Hearts" };
-
-	
-	string toString(string face, string suit) {
-		return face + "of" + suit + "\n";
-	}
-}; 
-
-
-Class DeckOfCards
-
-#pragma once
-#include <array>
-#include <iostream>
-#include <string>
-#include <Card.h>
-
-using namespace std;
-
-class DeckOfCards
-{
-	array <string, 52> deck ;
-
-	for (x = 0,x < 13, x++) {
-	cout << Card.toString()
-	}
-};
-
-main driver
-
-// Assignment 8 (9.23).cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <array>
-#include <iostream>
-#include <string>
-#include <Card.h>
-#include <DeckOfCards.h>
-
-using namespace std;
-
-int main()
-{
-    std::cout << "Hello World!\n";
-}
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+#ifndef CARD_H
+#define CARD_H
 
 #pragma once
 #include <string>
@@ -95,28 +19,98 @@ public:
 
 	enum class Suit { Spades, Clubs, Diamonds, Hearts };
 
-	Card(string face = "Ace", string suit = "Spades") :
-		face("Ace"),
-		suit("Spades")
+	Card(string faceVar = "Ace", string suit = "Spades") :
+		faceVar("Ace"),
+		suitVar("Spades")
 	{}
 
-	static array < string, 13> Face ;
-	static array < string, 4> Suit;
+	const array < string, 13> face{ "Ace", "Duece", "Three", "Four", "Five", "Sixe", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
+	const array < string, 4> suit{ "Spades", "Clubs", "Diamonds", "Hearts" };
 
 
-	string toString(string face, string suit) {
-		return face + "of" + suit + "\n";
+	string toString(string face[], string suit[]) {
+		for (int i = 0; i < 13; i++) {
+			for (int a = 0; a < 4; a++) {
+
+				return face[i] + "of" + suit[a];
+			}
+		}
+
 	}
 
 private:
-	string face;
-	string suit;
+	string faceVar;
+	string suitVar;
 
 };
+#endif CARD_H
+
 //{ "Ace", "Duece", "Three", "Four", "Five", "Sixe", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" }
 //{ "Spades", "Clubs", "Diamonds", "Hearts" }
 
 //const size_t sizeFace{ 13 };
 //const size_t sizeSuit{ 4 };
+
+deck of cards
+#pragma once
+#include <string>
+#include <iostream>
+#include "Card.h"
+#include <vector>
+
+using namespace std;
+
+#ifndef DECKOFCARDS_H
+#define DECKOFCARDS_H
+class DeckOfCards
+{
+public:
+	DeckOfCards() {
+	}
+
+	Card deckofCards;
+
+
+	deckofCards.toString();
+
+	void shuffle() {
+
+	}
+	string dealCard() {
+
+	}
+	bool moreCards() {
+
+	}
+
+private:
+	unsigned int currentCard;
+	vector <Card> deck;
+
+};
+
+#endif  DECKOFCARDS_H
+
+driver class
+// Assignment 8 (9.23).cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "Hello World!\n";
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
 
 
