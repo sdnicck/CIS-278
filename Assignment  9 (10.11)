@@ -1,0 +1,184 @@
+//Satya Dulam
+//CIS 278: Polynomial.cpp
+//November 3, 2024
+
+//importing h file and other programs to help set up class
+#include "Polynomial.h"
+#pragma once
+#include <vector>
+
+
+using namespace std;
+
+//creating a default constructor for polynomial setting both values to zero
+Polynomial::Polynomial():
+poly(){};
+
+//creating a regular constructor for the polynomail
+Polynomial::Polynomial(vector <int> p):  
+poly(p){};
+
+//creating a deconstructor for the object
+Polynomial::~Polynomial() {};
+
+//creating getters and setters for both the coefficient and the exponenet
+
+
+void Polynomial::setPoly(vector <int> p) {
+	poly = p;
+}
+
+vector <int>  Polynomial::getPoly() const {
+	return poly;
+}
+
+void Polynomial::addNum(int a) {
+	poly.push_back(a);
+}
+
+void Polynomial::displayPoly() const {
+	for (int i = 0; i < poly.size(); i++)
+		cout << poly[i] << "x^"<< i << endl;
+}
+
+//got rid of pass by reference & 
+const Polynomial Polynomial:: operator+ (static Polynomial right) {
+	Polynomial newValue;
+
+	if (poly.size() < right.poly.size()) {
+		int addZero = right.poly.size() - poly.size();
+		for (int i = 0; i< addZero;i++) {
+			addNum(0);
+		}
+	}
+
+	if (poly.size() > right.poly.size()) {
+		int addZero = poly.size()- right.poly.size();
+		for (int i = 0; i < addZero;i++) {
+			right.addNum(0);
+		}
+	}
+
+	for (int i = 0; i < poly.size(); i++) {
+		newValue.addNum(poly[i] + right.poly[i]);
+	}
+
+	right.displayPoly();
+	displayPoly();
+
+	return newValue;
+}
+
+const Polynomial Polynomial:: operator- (static Polynomial right) {
+	Polynomial newValue;
+
+	if (poly.size() < right.poly.size()) {
+		int addZero = right.poly.size() - poly.size();
+		for (int i = 0; i < addZero;i++) {
+			addNum(0);
+		}
+	}
+
+	if (poly.size() > right.poly.size()) {
+		int addZero = poly.size() - right.poly.size();
+		for (int i = 0; i < addZero;i++) {
+			right.addNum(0);
+		}
+	}
+
+	for (int i = 0; i < poly.size(); i++) {
+		newValue.addNum(poly[i] - right.poly[i]);
+	}
+
+
+	return newValue;
+}
+
+const Polynomial Polynomial:: operator* (const Polynomial right) {
+	int newIndexLength = poly.size() + right.poly.size()-1;
+	
+	Polynomial newValue;
+	for (int a = 0; a < newIndexLength;a++) {
+		newValue.addNum(0);
+	}
+
+	for (int i = 0; i < poly.size(); i++) {
+		Polynomial newVecSet;
+		for (int a = 0; a < (newIndexLength);a++) {
+			newVecSet.addNum(0);
+		}
+		for (int j = 0; j < right.poly.size(); j++) {
+			newVecSet.poly[i+j]=poly[i] * right.poly[j];
+
+		}
+		newValue += newVecSet;
+	}
+	return newValue;
+}
+
+const Polynomial& Polynomial:: operator+= (static Polynomial& right) {
+	if (poly.size() < right.poly.size()) {
+		int addZero = right.poly.size() - poly.size();
+		for (int i = 0; i < addZero;i++) {
+			addNum(0);
+		}
+	}
+
+	if (poly.size() > right.poly.size()) {
+		int addZero = poly.size() - right.poly.size();
+		for (int i = 0; i < addZero;i++) {
+			right.addNum(0);
+		}
+	}
+
+	for (int i = 0; i < poly.size(); i++) {
+		poly[i] = poly[i] + right.poly[i];
+	}
+
+	return *this;
+}
+
+const Polynomial& Polynomial:: operator-= (static Polynomial& right) {
+	Polynomial newValue;
+
+	if (poly.size() < right.poly.size()) {
+		int addZero = right.poly.size() - poly.size();
+		for (int i = 0; i < addZero;i++) {
+			addNum(0);
+		}
+	}
+
+	if (poly.size() > right.poly.size()) {
+		int addZero = poly.size() - right.poly.size();
+		for (int i = 0; i < addZero;i++) {
+			right.addNum(0);
+		}
+	}
+
+	for (int i = 0; i < poly.size(); i++) {
+		poly[i] = poly[i] - right.poly[i];
+	}
+
+	return *this;
+}
+
+const Polynomial& Polynomial:: operator*= (const Polynomial& right) {
+	int newIndexLength = poly.size() + right.poly.size() - 1;
+
+	for (int a = 0; a < newIndexLength;a++) {
+		addNum(0);
+	}
+
+	for (int i = 0; i < poly.size(); i++) {
+		Polynomial newVecSet;
+		for (int a = 0; a < (newIndexLength);a++) {
+			newVecSet.addNum(0);
+		}
+		for (int j = 0; j < right.poly.size(); j++) {
+			this->poly[i + j] = poly[i] * right.poly[j];
+		}
+		this += newVecSet.poly;
+	}
+	return *this;
+}
+
